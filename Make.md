@@ -1,0 +1,3 @@
+# Make Your Own Active Camera Systems Data for Depth Estimation
+
+> CNN has made great progress in depth estimation task. At present, the commonly used stereo matching public datasets include Middlebury, Sceneflow and kitti12/15 and so on. If you are interested in depth estimation of active camera systems and want to use deep learning methods to do this task, you need a lot of training data photo by active monocular or stereo systems. Unfortunately, there are no public active system datasets. This project gives a simple example: make your own active camera data inspired by **[Connecting the Dots: Learning Representations for Active Monocular Depth Estimation](http://www.cvlibs.net/publications/Riegler2019CVPR.pdf)**
