@@ -31,14 +31,13 @@ In the sub-directory named `shapenet`, we present the raw data of two kinds of 3
 ![example](shapenet/obj_example.png)
 
 ## PATTERN and Camera Parameters
-As mentioned earlier, we need to generate two-dimensional speckle images, so we need a two-dimensional speckle as our render image we call it PATTERN, which will be rendered on the 3D-model to generate 2D-speckle images. I give several different groups of PATTERNs include astra, D435 and primesense as reference in the `pattern` sub-folder. Astra and Primesense are structured light cameras, an active monocular camera system that can collect speckle and infrared images. D435 is binocular camera, which can take RGB pictures or open the projector to collect speckle images. For the latter case, D435 is an active binocular camera system. It should be emphasized that all the PATTERNs are obtained by taking pictures of the plane directly with the corresponding camera. The following table shows simple image parameters for different cameras.
+As mentioned earlier, we need to generate two-dimensional speckle images, so we need a two-dimensional speckle as our render image we call it PATTERN, which will be rendered on the 3D-model to generate 2D-speckle images. I give several different groups of PATTERNs include astra, D435 and primesense as reference in the `pattern` sub-folder. Astra and Primesense are structured light cameras, an active monocular camera system that can collect speckle and infrared images. D435 is binocular camera, which can take RGB pictures or open the projector to collect speckle images. For the latter case, D435 is an active binocular camera system. It should be emphasized that all the PATTERNs are obtained by taking pictures of the plane directly with the corresponding camera. The following table shows simple image parameters for different cameras. The last column indicates whether the PATTERN needs to be translated to infinity. This operation is required for structured light cameras, but not for binoculars. For the reason why the two kinds of cameras have different processing methods, please check the camera imaging principle and stereo matching algorithm carefully. If you don't understand the reason, you can leave me a message or email. Last but not least, all camera parameters are placed in the `Camera Parameters.txt` files.
 
 Cameras|Size|Bits|Object|Infinity
 :---:|:---:|:---:|:---:|:---:
 Astra|1280*1024|16|plane|Yes
 Primesense|1280*1024|16|plane|Yes
 D435|1280*720|8|plane|No  
-The last column indicates whether the PATTERN needs to be translated to infinity. This operation is required for structured light cameras, but not for binoculars. For the reason why the two kinds of cameras have different processing methods, please check the camera imaging principle and stereo matching algorithm carefully. If you don't understand the reason, you can leave me a message or email. Last but not least, all camera parameters are placed in the `Camera Parameters.txt` files.
 
 
 ## Running
@@ -51,7 +50,7 @@ The last column indicates whether the PATTERN needs to be translated to infinity
 }  
 3.Source activate */your-pytorch-environment/*, and then running `make` within the `renderer` directory.  
 4.Afterwards, `cd` into the `data` directory and open the `create_syn_data.py` file. You should modify the Camera Parameters in 225th lines.  
-5.Execute this `create_syn_data.py` file under `GPU` in your pytroch environment.
+5.Execute this `create_syn_data.py` file under `GPU` in your pytorch environment.
 
 Here, I will not explain this `create_syn_data.py` file in detail. You can modify different parameters according to your own needs to get the required speckle images.
 
@@ -66,7 +65,7 @@ In this project, I give three examples using different PATTERNs according to Ast
 *left_speckle.png*![left_speckle](speckle/d435/speckle_0/left_speckle.png)  
 *right_speckle.png*![right_speckle](speckle/d435/speckle_0/right_speckle.png)  
 The original code in **[connecting_the_dots-master](https://github.com/autonomousvision/connecting_the_dots)** only provide us with create synthetic data using monocular camera system. There is no doubt that the modifications are required for `create_syn_data.py` if you want to create left and right sepckle images for binocular camera system.  
-2.The disparity of the synthetic data generated using original code follows the uniform distribution, which is not consistent with the disparity distribution in the real world. You need to modify the `min_z` items in 73th lines in `create_syn_data.py` file.   
+2.The disparity of the synthetic data generated using original code follows the uniform distribution, which is not consistent with the disparity distributions in the real world. You need to modify the `min_z` items in 73th lines in `create_syn_data.py` file.   
 3.In my provided several cases, the `disp.png` is represented by `uint8` data type. As for training for CNN model, the accuracy of `uint8` may not be enough. I suggest you use `float` data type to save `disp`.  
 4.This work only focuses on synthetic data generation, please comment out `cv2.Sobel` and `lcn.normalize` items in `create_data` function.
 
