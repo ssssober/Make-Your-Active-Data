@@ -24,7 +24,7 @@ and other basic dependencies for pytorch.
 ## 3D-model preparation
 Although our final product is to generate the required speckle images, this project needs to prepare some 3D models in advance. We use a special renderer to project the speckle onto the 3D-model to obtain the final two-dimensional image. You need to use your business email to apply for the 3D-model dataset in **[ShapeNet: An Information-Rich 3D Model Repository](https://arxiv.org/abs/1512.03012)**. The original ShapeNet include 55 different objects, such as cars, airplanes, cans, etc. Seeing the figure below for the specific number of categories in **[ShapeNet](https://arxiv.org/abs/1512.03012)**.
 
-![example](shapenet/shapenet.png)
+![example](https://github.com/TheDetial/Make-Your-Active-Data/tree/master/shapenet/shapenet.png)
 
 In the sub-directory named `shapenet`, we present the raw data of two kinds of 3D models: airplane and chair. You can use **[MeshLab](http://www.meshlab.net/)** software to open `model_normalized.obj` files, then you will see the 3D model shown below:
 
