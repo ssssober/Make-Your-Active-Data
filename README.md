@@ -37,7 +37,7 @@ Cameras|Size|Bits|Object|Infinity
 :---:|:---:|:---:|:---:|:---:
 Astra|1280*1024|16|plane|Yes
 Primesense|1280*1024|16|plane|Yes
-D435|1280*720|8|plane|No
+D435|1280*720|8|plane|No  
 The last column indicates whether the PATTERN needs to be translated to infinity. This operation is required for structured light cameras, but not for binoculars. For the reason why the two kinds of cameras have different processing methods, please check the camera imaging principle and stereo matching algorithm carefully. If you don't understand the reason, you can leave me a message or email. Last but not least, all camera parameters are placed in the `Camera Parameters.txt` files.
 
 
