@@ -67,7 +67,8 @@ In this project, I give three examples using different PATTERNs according to Ast
 The original code in **[connecting_the_dots-master](https://github.com/autonomousvision/connecting_the_dots)** only provide us with create synthetic data using monocular camera system. There is no doubt that the modifications are required for `create_syn_data.py` if you want to create left and right sepckle images for binocular camera system.  
 2.The disparity of the synthetic data generated using original code follows the uniform distribution, which is not consistent with the disparity distributions in the real world. You need to modify the `min_z` items in 73th lines in `create_syn_data.py` file.   
 3.In my provided several cases, the `disp.png` is represented by `uint8` data type. As for training for CNN model, the accuracy of `uint8` may not be enough. I suggest you use `float` data type to save `disp`.  
-4.This work only focuses on synthetic data generation, please comment out `cv2.Sobel` and `lcn.normalize` items in `create_data` function.
+4.This work only focuses on synthetic data generation, please comment out `cv2.Sobel` and `lcn.normalize` items in `create_data` function.  
+5.Most of the 3D-models used to generate speckle images data are ramps rather than surfaces. If you want to have a great depth estimation of human face or body, it is recommended to use 3D human model for data generation.
 
 ## Acknowledgement
 This work is mainly inspired by **[connecting_the_dots](https://github.com/autonomousvision/connecting_the_dots)** and **[ShapeNet](https://arxiv.org/abs/1512.03012)**. If you find this work useful for your research, please cite
